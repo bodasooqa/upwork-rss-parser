@@ -14,10 +14,25 @@ The code ends abruptly, so it's likely there's more code following this that han
 
 ## Usage
 
+First of all:
+1. Create telegram bot via [@BotFather](https://t.me/BotFather)
+2. Get RSS link with your parameters in query (`q`, `securityToken`, `userUid`, `orgUid`)
+
 Install dependencies:
 
 ```bash
-yarn
+yarn install
+```
+Create `.env` and set values for ENV variables:
+```bash
+TELEGRAM_BOT_TOKEN=''
+TELEGRAM_CHAT_ID=''
+
+UPWORK_URL='https://www.upwork.com/ab/feed/jobs/rss'
+UPWORK_QUERY='(typescript+OR+vue)'
+UPWORK_SEQURITY_TOKEN=''
+UPWORK_USER_UID=''
+UPWORK_ORG_UID=''
 ```
 Run script:
 
@@ -27,5 +42,5 @@ yarn start
 
 ## Preview
 
-<img src="preview.png" alt="Image Description" width="600"/>
+<img src="preview.png" alt="preview" width="600"/>
 
