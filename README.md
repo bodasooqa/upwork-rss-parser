@@ -24,3 +24,8 @@ Run script:
 ```bash
 yarn start
 ```
+
+## Preview
+
+<img src="preview.png" alt="Image Description" width="600"/>
+
