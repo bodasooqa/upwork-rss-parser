@@ -15,11 +15,6 @@ const upworkURL = `${process.env.UPWORK_URL}?`
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
-bot.setMyCommands([
-  { command: '/start', description: 'Hello message' },
-  { command: '/clear', description: 'Clear the database' },
-])
-
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, 'Hello, I\'m Upwork RSS Bot');
 });
