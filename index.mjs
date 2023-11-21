@@ -15,9 +15,19 @@ const upworkURL = `${process.env.UPWORK_URL}?`
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
+bot.setMyCommands([
+  { command: '/start', description: 'Hello message' },
+  { command: '/clear', description: 'Clear the database' },
+])
+
 bot.onText(/\/start/, (msg) => {
   bot.sendMessage(msg.chat.id, 'Hello, I\'m Upwork RSS Bot');
 });
+
+bot.onText(/\/clear/, () => {
+  db.data.links = [];
+  db.write()
+})
 
 const checkForNewLinks = async () => {
   try {
@@ -32,7 +42,13 @@ const checkForNewLinks = async () => {
         process.env.TELEGRAM_CHAT_ID,
         `<b>${item.title}</b>`
         + '\n\n'
-        + `${item['content'].replaceAll('<br />', '\n').replaceAll('\n\n', '\n').replace(/\ {5,10}/g, ' ')}`,
+        + `${item['content']
+          .replaceAll('<br />', '\n')
+          .replaceAll('\n\n', '\n')
+          .replaceAll('&bull;', '•')
+          .replaceAll('&quot;', '"')
+          .replaceAll('&nbsp;', ' ')
+          .replace(/\ {5,10}/g, ' ')}`,
         { parse_mode: 'HTML' }
       );
     });
