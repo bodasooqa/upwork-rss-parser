@@ -11,7 +11,7 @@ const parser = new Parser();
 const upworkURL = `${process.env.UPWORK_URL}?`
   + `q=${process.env.UPWORK_QUERY}&` // Query
   + `sort=recency&verified_payment_only=1&paging=0%3B10&api_params=1&` // Filters
-  + `securityToken=${process.env.UPWORK_SEQURITY_TOKEN}&userUid=${process.env.UPWORK_USER_UID}&orgUid=${process.env.UPWORK_ORG_UID}`; // Auth
+  + `securityToken=${process.env.UPWORK_SECURITY_TOKEN}&userUid=${process.env.UPWORK_USER_UID}&orgUid=${process.env.UPWORK_ORG_UID}`; // Auth
 
 const bot = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN, { polling: true });
 
